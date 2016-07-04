@@ -1,5 +1,4 @@
 # pcgenerator
-Simple punchcard generator
 
 This is a simple program that generates an SVG file used to cut a punchcard on a die cutter.
 
