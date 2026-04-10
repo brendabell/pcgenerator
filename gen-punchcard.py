@@ -44,7 +44,7 @@ def init():
 	lines = []
 	if len(sys.argv) == 2:
 		filename = sys.argv[1]
-		print 'reading', filename, '...'
+		print('reading', filename, '...')
 		with open(filename, 'r') as f:
 			for line in f:
 				line = line.rstrip()
@@ -54,7 +54,7 @@ def init():
 				lines.append(chars)
 		ofname = '{0}.svg'.format(filename)
 	else:
-		print 'using default pattern...'
+		print('using default pattern...')
 		for row in range(48):
 			chars = []
 			for stitch in range(24):
@@ -68,7 +68,7 @@ def create_card():
 	global card_width
 	global card_height
 	
-	print 'creating card...'
+	print('creating card...')
 	diagram = svgwrite.Drawing(
 		ofname,
 		size=(
@@ -115,7 +115,7 @@ def draw_pattern(diagram, lines, objects):
 	global stroke_color
 	global stroke_width
 	
-	print 'drawing pattern...'
+	print('drawing pattern...')
 	# main body of card
 	rows = 0
 	yoffset = 10.0 + (row_height / 2)
@@ -146,7 +146,7 @@ def draw_blank_lines(diagram, objects):
 	global stroke_color
 	global stroke_width
 	
-	print 'drawing blank lines...'
+	print('drawing blank lines...')
 	# blank rows at top
 	rows = 0
 	yoffset = row_height / 2
@@ -193,7 +193,7 @@ def draw_clip_holes(diagram, objects):
 	global stroke_color
 	global stroke_width
 	
-	print 'drawing clip holes...'
+	print('drawing clip holes...')
 	left_xoffset = side_margin + (stitch_width / 2) - 6.0
 	right_xoffset = (card_width - side_margin - (stitch_width / 2)) + 6.0
 	yoffset = row_height / 2
@@ -214,7 +214,7 @@ def draw_clip_holes(diagram, objects):
 		yoffset += row_height
 
 def draw_sprocket_holes(diagram, objects):
-	print 'drawing sprocket holes...'
+	print('drawing sprocket holes...')
 	
 	left_xoffset = 6.5
 	right_xoffset = card_width - 6.5
@@ -239,11 +239,11 @@ def draw_sprocket_holes(diagram, objects):
 lines = init()
 card_rows = len(lines)
 card_stitches = len(lines[0])
-print 'pattern size:', card_rows, 'rows x', card_stitches, 'stitches'
+print('pattern size:', card_rows, 'rows x', card_stitches, 'stitches')
 
 card_width = (side_margin * 2) + (card_stitches * stitch_width)
 card_height = ((blank_rows * 2) + card_rows) * row_height
-print 'card size:', card_width, 'mm x', card_height, 'mm'
+print('card size:', card_width, 'mm x', card_height, 'mm')
 
 diagram = create_card()
 
@@ -259,4 +259,4 @@ for i in sorted_objects:
 	diagram.add(i)
 
 diagram.save()
-print 'saved', ofname
+print('saved', ofname)
